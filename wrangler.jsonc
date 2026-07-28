@@ -2,6 +2,5 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "room-of-error-vr",
   "compatibility_date": "2026-07-28",
-  "compatibility_flags": ["nodejs_compat"],
   "send_metrics": false
 }
