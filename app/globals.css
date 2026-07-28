@@ -88,6 +88,17 @@ button {
   will-change: transform;
 }
 
+.tutorial-room .scene {
+  transform:
+    translate3d(
+      calc(-50% + var(--scene-x)),
+      calc(-50% + var(--scene-y)),
+      0
+    )
+    scale(var(--scene-zoom));
+  transform-style: flat;
+}
+
 .viewer:active .scene {
   transition-duration: 0ms;
 }
@@ -106,6 +117,7 @@ button {
   position: absolute;
   inset: 0;
   opacity: 1;
+  pointer-events: none;
   transition: opacity 180ms ease;
 }
 
@@ -117,8 +129,8 @@ button {
 .hotspot {
   position: absolute;
   z-index: 3;
-  width: 46px;
-  height: 46px;
+  width: 58px;
+  height: 58px;
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.86);
   border-radius: 50%;
@@ -128,6 +140,7 @@ button {
     0 0 0 6px rgba(74, 222, 218, 0.18),
     0 8px 28px rgba(1, 35, 42, 0.35);
   cursor: pointer;
+  pointer-events: auto;
   transition:
     background 160ms ease,
     box-shadow 160ms ease;
@@ -153,6 +166,7 @@ button {
   border: 1px solid rgba(116, 255, 245, 0.72);
   border-radius: 50%;
   animation: hotspot-pulse 2.3s ease-out infinite;
+  pointer-events: none;
 }
 
 .hotspot.is-complete .hotspot-ring {
@@ -165,6 +179,7 @@ button {
   z-index: 1;
   font-size: 14px;
   font-weight: 750;
+  pointer-events: none;
 }
 
 .hotspot-label {
@@ -648,6 +663,11 @@ button {
   animation: panel-in 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
+.info-panel.info-panel-left {
+  right: auto;
+  left: 24px;
+}
+
 .panel-close {
   position: absolute;
   top: 16px;
@@ -934,6 +954,11 @@ button {
     animation-name: sheet-in;
   }
 
+  .info-panel.info-panel-left {
+    right: 10px;
+    left: 10px;
+  }
+
   .info-panel h2 {
     margin: 14px 0 8px;
     font-size: 24px;
@@ -982,8 +1007,8 @@ button {
   }
 
   .hotspot {
-    width: 48px;
-    height: 48px;
+    width: 60px;
+    height: 60px;
   }
 
   .hotspot-label {
@@ -2518,13 +2543,15 @@ button {
   }
 
   .tutorial-navigator > div {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     width: 100%;
+    overflow: visible;
   }
 
   .tutorial-navigator button {
-    flex-basis: 32px;
-    width: 32px;
-    height: 32px;
+    width: 100%;
+    height: 40px;
   }
 
   .mode-dock {

@@ -96,8 +96,8 @@ const TUTORIAL_POINTS: TutorialPoint[] = [
   },
   {
     id: 4,
-    x: 92,
-    y: 68,
+    x: 94,
+    y: 69.5,
     title: "의료폐기물 분리",
     category: "환자안전",
     description:
@@ -119,7 +119,7 @@ const TUTORIAL_POINTS: TutorialPoint[] = [
   {
     id: 6,
     x: 63,
-    y: 39,
+    y: 41,
     title: "수액과 주입펌프",
     category: "투약안전",
     description:
@@ -129,8 +129,8 @@ const TUTORIAL_POINTS: TutorialPoint[] = [
   },
   {
     id: 7,
-    x: 68,
-    y: 29,
+    x: 67.5,
+    y: 31,
     title: "환자감시장치",
     category: "환자평가",
     description:
@@ -140,8 +140,8 @@ const TUTORIAL_POINTS: TutorialPoint[] = [
   },
   {
     id: 8,
-    x: 78,
-    y: 35,
+    x: 74.5,
+    y: 34.5,
     title: "산소·흡인 장치",
     category: "호흡간호",
     description:
@@ -151,8 +151,8 @@ const TUTORIAL_POINTS: TutorialPoint[] = [
   },
   {
     id: 9,
-    x: 77,
-    y: 54,
+    x: 76.5,
+    y: 51,
     title: "침상 안전장치",
     category: "낙상예방",
     description:
@@ -162,8 +162,8 @@ const TUTORIAL_POINTS: TutorialPoint[] = [
   },
   {
     id: 10,
-    x: 85,
-    y: 52,
+    x: 84.7,
+    y: 51.5,
     title: "호출벨·침상 주변",
     category: "의사소통",
     description:
@@ -686,10 +686,15 @@ const CASES: CaseConfig[] = [
 const clamp = (value: number, min: number, max: number) =>
   Math.min(max, Math.max(min, value));
 
-const getHorizontalPanLimit = () =>
-  typeof window !== "undefined" && window.innerWidth < window.innerHeight
-    ? 44
-    : 11;
+const getHorizontalPanLimit = (zoom = 1.06) => {
+  if (typeof window === "undefined") return 11;
+  const sceneWidth = Math.max(
+    window.innerWidth,
+    window.innerHeight * (16 / 9),
+  );
+  const overflow = Math.max(0, sceneWidth * zoom - window.innerWidth);
+  return clamp((overflow / (sceneWidth * 2)) * 100, 0, 48);
+};
 
 const formatTime = (seconds: number) => {
   const minutes = Math.floor(seconds / 60);
@@ -917,22 +922,23 @@ export default function Home() {
       next.add(id);
       return next;
     });
+    setSelectedId(null);
     showFeedback("success", "안전점검 지점을 확인했습니다.");
   };
 
   const focusTutorialPoint = (point: TutorialPoint) => {
     const portrait =
       typeof window !== "undefined" && window.innerWidth < window.innerHeight;
-    const panLimit = getHorizontalPanLimit();
     setMarkersVisible(true);
     setSelectedId(point.id);
-    setView((current) => ({
-      ...current,
-      x: portrait
-        ? clamp(50 - point.x, -panLimit, panLimit)
-        : clamp(50 - point.x, -11, 11),
-      y: portrait ? clamp(50 - point.y, -12, 12) : current.y,
-    }));
+    setView((current) => {
+      const panLimit = getHorizontalPanLimit(current.zoom);
+      return {
+        ...current,
+        x: clamp(50 - point.x, -panLimit, panLimit),
+        y: portrait ? clamp(50 - point.y, -12, 12) : current.y,
+      };
+    });
   };
 
   const revealHint = () => {
@@ -1089,8 +1095,8 @@ export default function Home() {
           ...current,
           x: clamp(
             current.x + direction * 1.4,
-            -getHorizontalPanLimit(),
-            getHorizontalPanLimit(),
+            -getHorizontalPanLimit(current.zoom),
+            getHorizontalPanLimit(current.zoom),
           ),
         }));
       } else if (event.key === "ArrowUp" || event.key === "ArrowDown") {
@@ -1197,8 +1203,8 @@ export default function Home() {
       ...current,
       x: clamp(
         current.x + (dx / window.innerWidth) * 18,
-        -getHorizontalPanLimit(),
-        getHorizontalPanLimit(),
+        -getHorizontalPanLimit(current.zoom),
+        getHorizontalPanLimit(current.zoom),
       ),
       y: clamp(current.y + (dy / window.innerHeight) * 12, -7, 7),
     }));
@@ -1567,13 +1573,14 @@ export default function Home() {
                   style={{
                     left: `${point.x}%`,
                     top: `${point.y}%`,
-                    transform: `translate(-50%, -50%) scale(${1 / view.zoom})`,
+                    transform: "translate(-50%, -50%)",
                   }}
                   type="button"
                   aria-label={`${point.id}. ${point.title} 살펴보기`}
                   aria-pressed={selectedId === point.id}
                   onPointerDown={(event) => event.stopPropagation()}
-                  onClick={() => setSelectedId(point.id)}
+                  onPointerUp={(event) => event.stopPropagation()}
+                  onClick={() => focusTutorialPoint(point)}
                 >
                   <span className="hotspot-ring" aria-hidden="true" />
                   <span className="hotspot-number">{point.id}</span>
@@ -1785,7 +1792,14 @@ export default function Home() {
         )}
 
         {(selectedTutorial || selectedError) && (
-          <aside className="info-panel" aria-live="polite">
+          <aside
+            className={`info-panel ${
+              selectedTutorial && selectedTutorial.x >= 60
+                ? "info-panel-left"
+                : ""
+            }`}
+            aria-live="polite"
+          >
             <button
               className="panel-close"
               type="button"
