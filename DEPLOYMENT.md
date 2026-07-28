@@ -26,7 +26,8 @@ Cloudflare 대시보드에서 다음 값으로 설정합니다.
 
 `main` 브랜치가 변경될 때마다 Cloudflare가 자동으로 다시 빌드하고
 배포합니다. 최초 연결 시 Cloudflare 계정 로그인과 GitHub 저장소 접근
-승인이 필요합니다.
+승인이 필요합니다. Pages Functions에 필요한 호환성 날짜와
+`nodejs_compat` 설정은 저장소의 `wrangler.jsonc`에 포함되어 있습니다.
 
 Cloudflare CLI 로그인이 되어 있는 컴퓨터에서는 다음 명령으로도 배포할
 수 있습니다.
@@ -50,7 +51,8 @@ GitHub의 `main` 브랜치에 변경 사항을 반영하면 `.github/workflows/c
 
 이 프로젝트는 Next.js/Vinext와 Cloudflare Worker 구성을 사용합니다.
 `npm run build:pages`는 Vinext 결과물을 Cloudflare Pages의 고급
-`_worker.js` 형식으로 패키징합니다.
+`_worker.js` 형식으로 패키징합니다. `wrangler.jsonc`는 프로젝트 이름,
+출력 폴더와 Pages Functions 호환성 설정의 기준 파일입니다.
 
 - 현재 운영: ChatGPT Sites
 - 무료 공개 주소: Cloudflare Pages

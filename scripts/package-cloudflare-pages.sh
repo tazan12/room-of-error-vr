@@ -43,4 +43,8 @@ if (!source.includes(original)) {
 await writeFile(file, source.replaceAll(original, 'import("../_worker.js")'));
 NODE
 
+# Vinext writes a temporary Worker deploy redirect during its build. Pages uses
+# the checked-in wrangler.jsonc instead.
+rm -f "${project_root}/.wrangler/deploy/config.json"
+
 echo "Prepared Cloudflare Pages output: dist/pages"
