@@ -181,7 +181,7 @@ const CASES: CaseConfig[] = [
     title: "표준 병실 탐색",
     shortTitle: "OT · 표준 병실",
     subtitle: "오류가 없는 병실에서 조작법과 안전점검 기준을 익힙니다.",
-    image: "/assets/hospital-room-v3.png",
+    image: "/assets/hospital-room-v3.webp",
     mode: "tutorial",
     patient: "표준 병실",
     diagnosis: "오리엔테이션",
@@ -202,7 +202,7 @@ const CASES: CaseConfig[] = [
     title: "급성심근경색 초기간호",
     shortTitle: "사례 1 · 급성심근경색",
     subtitle: "PCI 준비 중인 환자의 산소·수액·응급간호 환경을 점검합니다.",
-    image: "/assets/case-1-mi-v3.png",
+    image: "/assets/case-1-mi-v3.webp",
     mode: "challenge",
     patient: "김○○ · 68세 · 남성",
     diagnosis: "STEMI · PCI 준비",
@@ -364,7 +364,7 @@ const CASES: CaseConfig[] = [
     title: "수술 후 고령환자",
     shortTitle: "사례 2 · 낙상 고위험",
     subtitle: "고관절 수술 후 첫 보행을 앞둔 환자의 낙상위험을 찾습니다.",
-    image: "/assets/case-2-fall-v3.png",
+    image: "/assets/case-2-fall-v3.webp",
     mode: "challenge",
     patient: "박○○ · 79세 · 여성",
     diagnosis: "고관절 치환술 · POD 1",
@@ -526,7 +526,7 @@ const CASES: CaseConfig[] = [
     title: "접촉주의 감염환자",
     shortTitle: "사례 3 · 감염·투약안전",
     subtitle: "MRSA 접촉주의 병실의 감염관리와 투약 오류를 찾습니다.",
-    image: "/assets/case-3-infection-v3.png",
+    image: "/assets/case-3-infection-v3.webp",
     mode: "challenge",
     patient: "이○○ · 62세 · 남성",
     diagnosis: "당뇨발 감염 · MRSA",
@@ -1262,7 +1262,7 @@ export default function Home() {
       <main className="lobby">
         <Image
           className="lobby-background"
-          src="/assets/hospital-room-v3.png"
+          src="/assets/hospital-room-v3.webp"
           alt=""
           fill
           priority
