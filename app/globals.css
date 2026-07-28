@@ -463,7 +463,7 @@ button {
 .vr-eye-image {
   position: absolute;
   inset: -7%;
-  background-image: url("/assets/hospital-room.webp");
+  background-image: url("/assets/hospital-room-v3.webp");
   background-repeat: no-repeat;
   background-position:
     calc(50% + var(--vr-x))

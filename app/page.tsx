@@ -96,8 +96,8 @@ const TUTORIAL_POINTS: TutorialPoint[] = [
   },
   {
     id: 4,
-    x: 42.5,
-    y: 62,
+    x: 92,
+    y: 68,
     title: "의료폐기물 분리",
     category: "환자안전",
     description:
@@ -181,7 +181,7 @@ const CASES: CaseConfig[] = [
     title: "표준 병실 탐색",
     shortTitle: "OT · 표준 병실",
     subtitle: "오류가 없는 병실에서 조작법과 안전점검 기준을 익힙니다.",
-    image: "/assets/hospital-room.webp",
+    image: "/assets/hospital-room-v3.webp",
     mode: "tutorial",
     patient: "표준 병실",
     diagnosis: "오리엔테이션",
@@ -202,7 +202,7 @@ const CASES: CaseConfig[] = [
     title: "급성심근경색 초기간호",
     shortTitle: "사례 1 · 급성심근경색",
     subtitle: "PCI 준비 중인 환자의 산소·수액·응급간호 환경을 점검합니다.",
-    image: "/assets/case-1-mi-v2.webp",
+    image: "/assets/case-1-mi-v3.webp",
     mode: "challenge",
     patient: "김○○ · 68세 · 남성",
     diagnosis: "STEMI · PCI 준비",
@@ -287,10 +287,10 @@ const CASES: CaseConfig[] = [
       },
       {
         id: 6,
-        x: 85,
-        y: 70,
-        radiusX: 7,
-        radiusY: 8,
+        x: 79,
+        y: 78.5,
+        radiusX: 4.5,
+        radiusY: 5.5,
         title: "호출벨 접근 불가",
         category: "의사소통",
         clue: "환자가 흉통 악화를 알릴 수 있는 호출 장치의 위치를 확인하세요.",
@@ -364,7 +364,7 @@ const CASES: CaseConfig[] = [
     title: "수술 후 고령환자",
     shortTitle: "사례 2 · 낙상 고위험",
     subtitle: "고관절 수술 후 첫 보행을 앞둔 환자의 낙상위험을 찾습니다.",
-    image: "/assets/case-2-fall-v2.webp",
+    image: "/assets/case-2-fall-v3.webp",
     mode: "challenge",
     patient: "박○○ · 79세 · 여성",
     diagnosis: "고관절 치환술 · POD 1",
@@ -463,13 +463,13 @@ const CASES: CaseConfig[] = [
       },
       {
         id: 7,
-        x: 46,
-        y: 58,
+        x: 92.5,
+        y: 66,
         radiusX: 4.8,
-        radiusY: 10.5,
+        radiusY: 12.5,
         title: "폐기물통 과충전",
         category: "환경안전",
-        clue: "응급카트 옆 폐기물 용기의 뚜껑과 내용물 높이를 살펴보세요.",
+        clue: "창가 수납장 옆 폐기물 용기의 뚜껑과 내용물 높이를 살펴보세요.",
         explanation:
           "임상폐기물통이 넘치고 뚜껑이 열려 있어 오염 물질 노출과 교차오염 위험이 있습니다.",
         action:
@@ -526,7 +526,7 @@ const CASES: CaseConfig[] = [
     title: "접촉주의 감염환자",
     shortTitle: "사례 3 · 감염·투약안전",
     subtitle: "MRSA 접촉주의 병실의 감염관리와 투약 오류를 찾습니다.",
-    image: "/assets/case-3-infection-v2.webp",
+    image: "/assets/case-3-infection-v3.webp",
     mode: "challenge",
     patient: "이○○ · 62세 · 남성",
     diagnosis: "당뇨발 감염 · MRSA",
@@ -583,13 +583,13 @@ const CASES: CaseConfig[] = [
       },
       {
         id: 4,
-        x: 42.5,
-        y: 59.5,
-        radiusX: 4.8,
-        radiusY: 9.5,
+        x: 82.8,
+        y: 81.3,
+        radiusX: 4.7,
+        radiusY: 10.5,
         title: "개방된 감염성 폐기물통",
         category: "폐기물관리",
-        clue: "붉은색 폐기물통의 뚜껑과 주변을 확인하세요.",
+        clue: "창가 수납장과 방문자 의자 사이 붉은색 폐기물통을 확인하세요.",
         explanation:
           "감염성 폐기물통 뚜껑이 열려 있고 오염 거즈가 밖으로 나와 환경오염 위험이 있습니다.",
         action:
@@ -611,10 +611,10 @@ const CASES: CaseConfig[] = [
       },
       {
         id: 6,
-        x: 80,
-        y: 81,
-        radiusX: 14,
-        radiusY: 8,
+        x: 72.5,
+        y: 77,
+        radiusX: 6,
+        radiusY: 5,
         title: "IV 라인 끝이 바닥에 접촉",
         category: "무균술",
         clue: "주입펌프에서 내려오는 라인의 끝부분이 어디에 닿는지 보세요.",
@@ -1256,7 +1256,7 @@ export default function Home() {
       <main className="lobby">
         <Image
           className="lobby-background"
-          src="/assets/hospital-room.webp"
+          src="/assets/hospital-room-v3.webp"
           alt=""
           fill
           priority
