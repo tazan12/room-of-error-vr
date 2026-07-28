@@ -181,7 +181,7 @@ const CASES: CaseConfig[] = [
     title: "표준 병실 탐색",
     shortTitle: "OT · 표준 병실",
     subtitle: "오류가 없는 병실에서 조작법과 안전점검 기준을 익힙니다.",
-    image: "/assets/hospital-room-v3.webp",
+    image: "/assets/hospital-room-v3.png",
     mode: "tutorial",
     patient: "표준 병실",
     diagnosis: "오리엔테이션",
@@ -202,7 +202,7 @@ const CASES: CaseConfig[] = [
     title: "급성심근경색 초기간호",
     shortTitle: "사례 1 · 급성심근경색",
     subtitle: "PCI 준비 중인 환자의 산소·수액·응급간호 환경을 점검합니다.",
-    image: "/assets/case-1-mi-v3.webp",
+    image: "/assets/case-1-mi-v3.png",
     mode: "challenge",
     patient: "김○○ · 68세 · 남성",
     diagnosis: "STEMI · PCI 준비",
@@ -364,7 +364,7 @@ const CASES: CaseConfig[] = [
     title: "수술 후 고령환자",
     shortTitle: "사례 2 · 낙상 고위험",
     subtitle: "고관절 수술 후 첫 보행을 앞둔 환자의 낙상위험을 찾습니다.",
-    image: "/assets/case-2-fall-v3.webp",
+    image: "/assets/case-2-fall-v3.png",
     mode: "challenge",
     patient: "박○○ · 79세 · 여성",
     diagnosis: "고관절 치환술 · POD 1",
@@ -526,7 +526,7 @@ const CASES: CaseConfig[] = [
     title: "접촉주의 감염환자",
     shortTitle: "사례 3 · 감염·투약안전",
     subtitle: "MRSA 접촉주의 병실의 감염관리와 투약 오류를 찾습니다.",
-    image: "/assets/case-3-infection-v3.webp",
+    image: "/assets/case-3-infection-v3.png",
     mode: "challenge",
     patient: "이○○ · 62세 · 남성",
     diagnosis: "당뇨발 감염 · MRSA",
@@ -1262,7 +1262,7 @@ export default function Home() {
       <main className="lobby">
         <Image
           className="lobby-background"
-          src="/assets/hospital-room-v3.webp"
+          src="/assets/hospital-room-v3.png"
           alt=""
           fill
           priority
@@ -1271,26 +1271,41 @@ export default function Home() {
         />
         <div className="lobby-shade" />
         <header className="lobby-header">
-          <div className="brand brand-static">
-            <span className="brand-mark">N</span>
-            <span>
-              <b>Nursing Simulation Lab</b>
-              <small>Interactive Room of Error</small>
+          <div className="brand brand-static institution-brand">
+            <span className="brand-mark brand-logo" aria-hidden="true">
+              <Image
+                src="/assets/kyungmin-university-logo-transparent.png"
+                alt=""
+                width={58}
+                height={58}
+                priority
+                unoptimized
+              />
+            </span>
+            <span className="brand-copy">
+              <b className="institution-name">
+                경민대학교 통합시뮬레이션수업
+              </b>
+              <small>Room of Error · 환자안전 시뮬레이션</small>
             </span>
           </div>
-          <span className="version-badge">4 CASES · 2.5D VR</span>
+          <span className="version-badge">
+            KYUNGMIN UNIVERSITY · 4 CASES · 2.5D VR
+          </span>
         </header>
 
         <section className="lobby-content">
           <div className="lobby-heading">
-            <span className="eyebrow">PATIENT SAFETY SIMULATION</span>
+            <span className="eyebrow">
+              KYUNGMIN UNIVERSITY · INTEGRATED SIMULATION
+            </span>
             <h1>
               Room of Error
-              <em>오류를 찾아 환자를 지켜주세요</em>
+              <em>경민대학교 통합시뮬레이션수업</em>
             </h1>
             <p>
-              OT에서 조작법을 익힌 뒤 세 가지 임상사례에서 숨겨진
-              환자안전 오류를 직접 찾아보세요.
+              오류를 찾아 환자를 지켜주세요. OT에서 조작법을 익힌 뒤 세
+              가지 임상사례에서 숨겨진 환자안전 오류를 직접 찾아보세요.
             </p>
           </div>
 
@@ -1695,11 +1710,24 @@ export default function Home() {
         <div className="edge-vignette" aria-hidden="true" />
 
         <header className="topbar">
-          <div className="brand">
-            <span className="brand-mark">{currentCase.order}</span>
-            <span>
-              <b>{currentCase.shortTitle}</b>
-              <small>{currentCase.badge}</small>
+          <div className="brand institution-brand">
+            <span className="brand-mark brand-logo" aria-hidden="true">
+              <Image
+                src="/assets/kyungmin-university-logo-transparent.png"
+                alt=""
+                width={44}
+                height={44}
+                priority
+                unoptimized
+              />
+            </span>
+            <span className="brand-copy">
+              <b className="institution-name">
+                경민대학교 통합시뮬레이션수업
+              </b>
+              <small>
+                {currentCase.shortTitle} · {currentCase.badge}
+              </small>
             </span>
           </div>
 
