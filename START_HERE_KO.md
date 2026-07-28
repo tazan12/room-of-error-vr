@@ -24,13 +24,17 @@ npm run dev
 
 ```bash
 npm run build
+npm test
+npm run build:pages
 ```
+
+Cloudflare Pages 연결 값과 무료 주소 설정은 `DEPLOYMENT.md`에 정리되어
+있습니다.
 
 ## 주요 파일
 
 - `app/page.tsx`: 사례, 오류 지점, 힌트, 디브리핑 및 상호작용
 - `app/globals.css`: 화면과 반응형 스타일
 - `public/assets/`: OT 및 사례별 병실 이미지
-- `package.json`: 실행·빌드 명령
-
-현재 배포 소스 커밋: `b0076f6f56a001e457e4f4bbf1e997aebd11a1cc`
+- `package.json`: 실행·빌드·Cloudflare Pages 명령
+- `DEPLOYMENT.md`: Cloudflare Pages 연결과 자동 배포 설정

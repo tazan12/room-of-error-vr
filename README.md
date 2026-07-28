@@ -6,6 +6,10 @@
 
 [배포된 Room of Error VR 열기](https://hospital-vr-lab.san5pro.chatgpt.site)
 
+Cloudflare Pages용 무료 주소 `room-vr.pages.dev` 배포 설정도 포함되어
+있습니다. 최초 계정 연결 방법은 [DEPLOYMENT.md](DEPLOYMENT.md)를
+참고하세요.
+
 ## 학습 사례
 
 | 구분 | 내용 | 점검 항목 |
@@ -41,6 +45,7 @@ npm run dev
 ```bash
 npm run build
 npm test
+npm run build:pages
 ```
 
 GitHub Actions가 `main` 브랜치와 Pull Request의 빌드 가능 여부를 자동으로 확인합니다.
